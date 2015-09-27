@@ -27,10 +27,12 @@ public class ProductGridAdapter extends RecyclerView.Adapter<ProductHolder> {
 
     private Context context;
     ArrayList<Product> product;
+    private ItemClickListener itemClickListener;
 
-    public ProductGridAdapter(Context context, Products products) {
+    public ProductGridAdapter(Context context, Products products, ItemClickListener itemClickListener) {
         this.context = context;
         product = products != null ? products.getProducts() : null;
+        this.itemClickListener = itemClickListener;
 
     }
 
@@ -47,6 +49,7 @@ public class ProductGridAdapter extends RecyclerView.Adapter<ProductHolder> {
     public ProductHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View layoutView = LayoutInflater.from(parent.getContext()).inflate(R.layout.products, null);
         ProductHolder productHolder = new ProductHolder(layoutView);
+        productHolder.setItemClickListener(itemClickListener);
         return productHolder;
     }
 

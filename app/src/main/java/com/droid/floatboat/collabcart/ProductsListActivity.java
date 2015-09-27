@@ -1,5 +1,6 @@
 package com.droid.floatboat.collabcart;
 
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
@@ -11,6 +12,8 @@ import android.widget.Toast;
 
 import com.droid.floatboat.collabcart.adapters.ProductGridAdapter;
 import com.droid.floatboat.collabcart.data.Session;
+import com.droid.floatboat.collabcart.interfaces.ItemClickListener;
+import com.droid.floatboat.collabcart.models.Product;
 import com.droid.floatboat.collabcart.models.Products;
 import com.droid.floatboat.collabcart.net.OnCompleteCallBack;
 import com.droid.floatboat.collabcart.utils.CartUtils;
@@ -22,8 +25,9 @@ import com.droid.floatboat.collabcart.utils.CartUtils;
 public class ProductsListActivity extends ActionBarActivity {
 
     private static final String LOG_TAG = ProductsListActivity.class.getName();
-    private int categoryId;
+    private int productId;
     int categoryIdFromBundle = 0;
+    int categoryId = 0;
     RecyclerView recyclerView;
     ProductGridAdapter gridAdapter;
 
@@ -41,12 +45,23 @@ public class ProductsListActivity extends ActionBarActivity {
         recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
         //recyclerView.setHasFixedSize(true);
 
+        ItemClickListener itemClickListener = new ItemClickListener() {
+            @Override
+            public void onItemClick(int pos) {
+                int selectedProduct = pos;
+                Intent intent = new Intent(ProductsListActivity.this, ProductDetailsActivity.class);
+                intent.putExtra("productIndex", selectedProduct);
+                startActivity(intent);
+            }
+        };
+
+
         // The number of Columns
         GridLayoutManager layoutManager = new GridLayoutManager(this, 2);
         layoutManager.setOrientation(GridLayoutManager.VERTICAL);
         recyclerView.setLayoutManager(layoutManager);
 
-        gridAdapter = new ProductGridAdapter(this,Session.getProducts());
+        gridAdapter = new ProductGridAdapter(this, Session.getProducts(), itemClickListener);
         recyclerView.setAdapter(gridAdapter);
 
 
@@ -87,8 +102,8 @@ public class ProductsListActivity extends ActionBarActivity {
                     gridAdapter.updateProductsList(Session.getProducts());
                     if (success) {
                         categoryId = categoryIdFromBundle;
-                    }else{
-                        Toast.makeText(ProductsListActivity.this,"Unable to fetch products",Toast.LENGTH_SHORT).show();
+                    } else {
+                        Toast.makeText(ProductsListActivity.this, "Unable to fetch products", Toast.LENGTH_SHORT).show();
                     }
                     Log.d(LOG_TAG, "Fetch Products success?" + success + " statusCode " + statusCode);
 

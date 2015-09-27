@@ -53,6 +53,14 @@ public class Product {
         this.image = image;
     }
 
+    public int getProductId() {
+        return productId;
+    }
+
+    public void setProductId(int productId) {
+        this.productId = productId;
+    }
+
     private class ImagePOJO {
 
         @SerializedName("url")
