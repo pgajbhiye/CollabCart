@@ -38,6 +38,8 @@ public class CartUtils {
 
     public static void hideProgress() {
         if (progress != null && progress.isShowing()) {
+            animatorSet.removeAllListeners();
+            animatorSet.end();
             animatorSet.cancel();
             progress.cancel();
 

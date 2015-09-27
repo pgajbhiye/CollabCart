@@ -14,4 +14,8 @@
     <color name="login_bg">#27000000</color>
     <color name="login_text_color">#ffffff</color>
 
+    //apptheme color
+    <color name="app_color">#BC1025</color>
+
+
 </resources>
