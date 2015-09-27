@@ -1,6 +1,7 @@
 package com.droid.floatboat.collabcart;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.RecyclerView;
@@ -43,8 +44,12 @@ public class ProductCategoryActivity extends Activity {
         ItemClickListener itemClickListener = new ItemClickListener() {
             @Override
             public void onItemClick(int pos) {
-                Toast.makeText(ProductCategoryActivity.this, "Clicked " + pos, Toast.LENGTH_SHORT).show();
                 categoryId = Session.getCategories().mapCategoryByTag(list.get(pos).getCategoryTag());
+                Toast.makeText(ProductCategoryActivity.this, "Clicked " + categoryId, Toast.LENGTH_SHORT).show();
+
+                Intent intent = new Intent(ProductCategoryActivity.this, ProductsListActivity.class);
+                intent.putExtra("categoryId", categoryId);
+                startActivity(intent);
                 //send categoryId in bundle to load each products page
 
             }
@@ -59,17 +64,8 @@ public class ProductCategoryActivity extends Activity {
                 CartUtils.hideProgress();
                 if (success) {
 
-                    Products.fetchProducts(Session.getUserId(), categoryId, new OnCompleteCallBack() {
-                        @Override
-                        public void onComplete(boolean success, int statusCode) {
-                            Log.d(LOG_TAG, "Fetch Products success" + success + " statusCode " + statusCode);
-
-                        }
-                    });
-
-
                 }
-                Log.d(LOG_TAG, "Fetch Categories success" + success + " statusCode " + statusCode);
+                Log.d(LOG_TAG, "Fetch Categories success?" + success + " statusCode " + statusCode);
             }
         });
 

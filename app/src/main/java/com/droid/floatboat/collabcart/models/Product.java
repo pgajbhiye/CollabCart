@@ -11,6 +11,9 @@ public class Product {
     private int minPrice;
     private int maxPrice;
 
+    @SerializedName("defaultImage")
+    private ImagePOJO image;
+
     public int getMinPrice() {
         return minPrice;
     }
@@ -33,6 +36,21 @@ public class Product {
 
     public void setProductName(String productName) {
         this.productName = productName;
+    }
+
+    public ImagePOJO getImage() {
+        return image;
+    }
+
+    public String getImageUrl(){
+        if(image!=null){
+            return image.getImageUrl();
+        }
+        return null;
+    }
+
+    public void setImage(ImagePOJO image) {
+        this.image = image;
     }
 
     private class ImagePOJO {

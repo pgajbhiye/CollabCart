@@ -3,8 +3,10 @@
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="card_corner_radius">16dp</dimen>
+    <dimen name="product_card_corner_radius">4dp</dimen>
     <dimen name="categoryname_padding">8dp</dimen>
     <dimen name="label_text_size">8dp</dimen>
+    <dimen name="product_name_padding">14dp</dimen>
 
 
 </resources>
