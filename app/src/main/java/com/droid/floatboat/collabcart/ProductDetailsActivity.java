@@ -1,6 +1,8 @@
 package com.droid.floatboat.collabcart;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -98,7 +100,7 @@ public class ProductDetailsActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(ProductDetailsActivity.this, "fab clicked", Toast.LENGTH_SHORT).show();
+                showChatDialog();
             }
         });
 
@@ -172,6 +174,26 @@ public class ProductDetailsActivity extends AppCompatActivity {
 
     }
 
+
+    private void showChatDialog() {
+        final Dialog dialog = new Dialog(this);
+        dialog.setContentView(R.layout.chatwindow);
+        // Set dialog title
+        dialog.setTitle("Friends Chat");
+        dialog.show();
+
+        final EditText chatInput = (EditText) dialog.findViewById(R.id.chatinput);
+        Button sendBtn = (Button) dialog.findViewById(R.id.sendbtn);
+
+        sendBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+               String enteredText =  chatInput.getText().toString();
+
+            }
+        });
+
+    }
 
 }
 

@@ -132,6 +132,7 @@
         android:layout_gravity="bottom|right"
         android:layout_margin="10dp"
         android:gravity="bottom"
+        android:src="@drawable/chat"
         app:layout_anchorGravity="bottom|right|end"
         app:theme="@style/ThemeOverlay.AppCompat.Light" />
 
