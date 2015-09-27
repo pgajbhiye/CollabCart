@@ -26,7 +26,7 @@ public class Session {
     }
 
     public static String getUserId() {
-        return userDetails.getGuid();
+        return userDetails != null ? userDetails.getGuid() : null;
     }
 
     public static void setCategories(Categories clist) {
@@ -46,35 +46,35 @@ public class Session {
         Session.products = products;
     }
 
-    public static CollabCart initiateCollabCart(){
+    public static CollabCart initiateCollabCart() {
         collabCart = new CollabCart();
         collabCart.connect();
         return collabCart;
     }
 
-    public static void setProductViewsData(ArrayList<BarchartData> pvData){
+    public static void setProductViewsData(ArrayList<BarchartData> pvData) {
         productViewsData = pvData;
     }
 
-    public static ArrayList<BarchartData> getProductViewsData(){
+    public static ArrayList<BarchartData> getProductViewsData() {
         return productViewsData;
     }
 
-    public static void setProductPurchaseData(ArrayList<BarchartData> pvData){
+    public static void setProductPurchaseData(ArrayList<BarchartData> pvData) {
         productPurchaseData = pvData;
     }
 
-    public static ArrayList<BarchartData> getProductPurchaseData(){
+    public static ArrayList<BarchartData> getProductPurchaseData() {
         return productPurchaseData;
     }
 
-    public static void destroy(){
-        if(collabCart!=null){
+    public static void destroy() {
+        if (collabCart != null) {
             collabCart.disconnect();
         }
     }
 
-    public static CollabCart getCollabCart(){
+    public static CollabCart getCollabCart() {
         return collabCart;
     }
 
