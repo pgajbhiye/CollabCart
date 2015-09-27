@@ -222,7 +222,7 @@ public class ProductDetailsActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                String enteredText =  chatInput.getText().toString();
-
+                chatInput.setText("");
                 try{
 
                     JSONObject obj = new JSONObject();
