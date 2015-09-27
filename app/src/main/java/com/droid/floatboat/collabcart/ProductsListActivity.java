@@ -30,6 +30,7 @@ public class ProductsListActivity extends ActionBarActivity {
     int categoryId = 0;
     RecyclerView recyclerView;
     ProductGridAdapter gridAdapter;
+    ItemClickListener itemClickListener;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,7 +46,7 @@ public class ProductsListActivity extends ActionBarActivity {
         recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
         //recyclerView.setHasFixedSize(true);
 
-        ItemClickListener itemClickListener = new ItemClickListener() {
+itemClickListener = new ItemClickListener() {
             @Override
             public void onItemClick(int pos) {
                 int selectedProduct = pos;
@@ -60,10 +61,6 @@ public class ProductsListActivity extends ActionBarActivity {
         GridLayoutManager layoutManager = new GridLayoutManager(this, 2);
         layoutManager.setOrientation(GridLayoutManager.VERTICAL);
         recyclerView.setLayoutManager(layoutManager);
-
-        gridAdapter = new ProductGridAdapter(this, Session.getProducts(), itemClickListener);
-        recyclerView.setAdapter(gridAdapter);
-
 
     }
 
@@ -99,11 +96,13 @@ public class ProductsListActivity extends ActionBarActivity {
                 @Override
                 public void onComplete(boolean success, int statusCode) {
                     CartUtils.hideProgress();
-                    gridAdapter.updateProductsList(Session.getProducts());
+                    gridAdapter = new ProductGridAdapter(ProductsListActivity.this, Session.getProducts(), itemClickListener);
+                    recyclerView.setAdapter(gridAdapter);
+
+                   // gridAdapter.updateProductsList(Session.getProducts());
+
                     if (success) {
                         categoryId = categoryIdFromBundle;
-                    } else {
-                        Toast.makeText(ProductsListActivity.this, "Unable to fetch products", Toast.LENGTH_SHORT).show();
                     }
                     Log.d(LOG_TAG, "Fetch Products success?" + success + " statusCode " + statusCode);
 

@@ -15,10 +15,12 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.droid.floatboat.collabcart.Charts.BarchartHelper;
 import com.droid.floatboat.collabcart.Charts.ChartDataProvider;
+import com.droid.floatboat.collabcart.collbcartsdk.CollabCart;
 import com.droid.floatboat.collabcart.data.Session;
 import com.droid.floatboat.collabcart.interfaces.ItemClickListener;
 import com.droid.floatboat.collabcart.models.BarchartData;
@@ -29,6 +31,10 @@ import com.droid.floatboat.collabcart.services.ProductStatsService;
 import com.droid.floatboat.collabcart.utils.CartUtils;
 import com.github.mikephil.charting.charts.BarChart;
 import com.squareup.picasso.Picasso;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 
@@ -56,11 +62,19 @@ public class ProductDetailsActivity extends AppCompatActivity {
 
         product = Session.getProducts().getProducts().get(index);
 
+        TextView addToCart = (TextView) findViewById(R.id.addtocart);
+        addToCart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                sendPurchasedData();
+            }
+        });
+
         mViewCountChart = (BarChart) findViewById(R.id.viewcountchart);
         mPurchaseCountChart = (BarChart) findViewById(R.id.purchasecountchart);
         ImageView image = (ImageView) findViewById(R.id.image);
         Picasso.with(this)
-                .load(product.getImageUrl()+ "?width=130&height=130&trim=0&quality=80")
+                .load(product.getImageUrl() + "?width=130&height=130&trim=0&quality=80")
                         // .placeholder(R.drawable.nopreview)
                         // .error(R.drawable.nopreview)
                 .into(image);
@@ -88,9 +102,8 @@ public class ProductDetailsActivity extends AppCompatActivity {
             }
         });
 
-
+        sendProductViewData();
     }
-
 
     private void loadPurchaseCountChart() {
         mPurchaseCountChartHelper = new BarchartHelper(mPurchaseCountChart, "Purchases per Day", new ChartDataProvider() {
@@ -129,6 +142,34 @@ public class ProductDetailsActivity extends AppCompatActivity {
                 });
             }
         });
+    }
+
+    private void sendPurchasedData() {
+        try {
+            JSONObject obj = new JSONObject();
+            obj.put("productId", product.getProductId());
+            obj.put("userId", Session.getUserId());
+
+            Session.getCollabCart().notify(CollabCart.Actions.PRODUCT_PURCHASE, obj);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+
+    private void sendProductViewData() {
+        try {
+            JSONObject obj = new JSONObject();
+            obj.put("productId", product.getProductId());
+
+            obj.put("userId", Session.getUserId());
+
+            Session.getCollabCart().notify(CollabCart.Actions.PRODUCT_VIEW, obj);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
     }
 
 

@@ -74,4 +74,8 @@ public class Session {
         }
     }
 
+    public static CollabCart getCollabCart(){
+        return collabCart;
+    }
+
 }

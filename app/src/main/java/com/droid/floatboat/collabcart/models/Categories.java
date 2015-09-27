@@ -1,6 +1,7 @@
 package com.droid.floatboat.collabcart.models;
 
 
+import com.droid.floatboat.collabcart.config.Config;
 import com.droid.floatboat.collabcart.net.OnCompleteCallBack;
 import com.droid.floatboat.collabcart.services.CategoriesService;
 
@@ -32,7 +33,7 @@ public class Categories {
                 return c.getCategoryId();
             }
         }
-        return 0;
+        return Config.DEFAULT_CATEGORY;
 
 
     }
