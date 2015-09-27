@@ -29,7 +29,5 @@ dependencies {
     compile 'com.squareup.retrofit:converter-gson:2.0.0-beta1'
     compile group: 'org.achartengine', name: 'achartengine', version: '1.2.0'
     compile 'com.squareup.retrofit:retrofit:2.0.0-beta1'
-
-
-
+    compile 'com.github.nkzawa:socket.io-client:0.3.0'
 }

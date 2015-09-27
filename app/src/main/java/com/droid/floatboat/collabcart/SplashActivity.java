@@ -10,7 +10,6 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.droid.floatboat.collabcart.data.Session;
-import com.droid.floatboat.collabcart.models.Categories;
 import com.droid.floatboat.collabcart.models.User;
 import com.droid.floatboat.collabcart.net.OnCompleteCallBack;
 import com.droid.floatboat.collabcart.utils.CartUtils;
@@ -42,6 +41,7 @@ public class SplashActivity extends Activity {
                         CartUtils.hideProgress();
                         if (success) {
                             //do something
+                            Session.initiateCollabCart();
                             Intent intent = new Intent(SplashActivity.this,ProductCategoryActivity.class);
                             startActivity(intent);
                             finish();
