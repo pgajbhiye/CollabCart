@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="categoryname_bg">#6b000000</color>
+    <color name="categoryname_txt_color">#ffffff</color>
+
+    //chart
+    <color name="chart_bg">#ffffff</color>
+    <color name="chart_color">#000000</color>
+
+    //login
+    <color name="login_bgg">#BC1025</color>
+    <color name="login_button_bg">#8A0023</color>
+    <color name="login_bg">#27000000</color>
+    <color name="login_text_color">#ffffff</color>
+
+</resources>
