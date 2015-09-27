@@ -3,7 +3,6 @@ package com.droid.floatboat.collabcart.adapters;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -52,7 +51,13 @@ public class ProductCategoryAdapter extends RecyclerView.Adapter<CategoryHolder>
 
     @Override
     public void onBindViewHolder(CategoryHolder categoryHolder, int position) {
-        categoryHolder.categoryName.setText(list.get(position).getCategoryName());
+        String name = list.get(position).getCategoryName();
+        categoryHolder.categoryName.setText(name);
+        if(name.length()==0){
+            categoryHolder.categoryName.setVisibility(View.GONE);
+        } else {
+            categoryHolder.categoryName.setVisibility(View.VISIBLE);
+        }
         categoryHolder.categoryPhoto.setImageResource(list.get(position).getCategoryPhoto());
 
     }

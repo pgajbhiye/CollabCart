@@ -36,7 +36,7 @@ public class ProductCategoryActivity extends Activity {
         setContentView(R.layout.product_categories);
         CartUtils.showProgress(this);
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
-        recyclerView.setLayoutManager(new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL));
+        recyclerView.setLayoutManager(new StaggeredGridLayoutManager(1, StaggeredGridLayoutManager.VERTICAL));
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setHasFixedSize(true);
         setListing();
@@ -77,12 +77,12 @@ public class ProductCategoryActivity extends Activity {
     }
 
     public void setListing() {
-        list.add(new CardViewData().setCategoryName("Apparels").setCategoryTag("FemaleShirt").setCategoryPhoto(R.drawable.images));
-        list.add(new CardViewData().setCategoryName("Electronics").setCategoryTag("FemaleJeans").setCategoryPhoto(R.drawable.electronic));
-        list.add(new CardViewData().setCategoryName("Beauty").setCategoryTag("FemaleShoes").setCategoryPhoto(R.drawable.beauty));
-        list.add(new CardViewData().setCategoryName("Electronics").setCategoryTag("MaleShirt").setCategoryPhoto(R.drawable.electronic));
-        list.add(new CardViewData().setCategoryName("Utilities").setCategoryTag("MaleJeans").setCategoryPhoto(R.drawable.images));
-        list.add(new CardViewData().setCategoryName("Luxury").setCategoryTag("MaleShoes").setCategoryPhoto(R.drawable.electronic));
+        list.add(new CardViewData().setCategoryName("").setCategoryTag("FemaleShirt").setCategoryPhoto(R.drawable.banner_designercollection));
+        list.add(new CardViewData().setCategoryName("").setCategoryTag("MaleShirt").setCategoryPhoto(R.drawable.banner_mens));
+        list.add(new CardViewData().setCategoryName("").setCategoryTag("MaleJeans").setCategoryPhoto(R.drawable.banner_sale));
+        list.add(new CardViewData().setCategoryName("").setCategoryTag("FemaleShoes").setCategoryPhoto(R.drawable.banner_womenshoes));
+        list.add(new CardViewData().setCategoryName("").setCategoryTag("FemaleJeans").setCategoryPhoto(R.drawable.banner_summeroffer));
+        list.add(new CardViewData().setCategoryName("").setCategoryTag("MaleShoes").setCategoryPhoto(R.drawable.banner_menshoes));
     }
 
 }
