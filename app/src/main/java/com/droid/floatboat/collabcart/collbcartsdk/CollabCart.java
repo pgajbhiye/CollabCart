@@ -21,9 +21,9 @@ public class CollabCart {
 
     private static final String LOG_TAG = CollabCart.class.getName();
 
-    public static enum Actions {PRODUCT_VIEW, PRODUCT_PURCHASE}
+    public static enum Actions {PRODUCT_VIEW, PRODUCT_PURCHASE, CHAT_MESSAGE_POST, CHAT_WINDOW_LEFT}
 
-    public static enum Events {CONNECTED, USER_VIEWING_PRODUCT, USER_PURCHASED_PRODUCT, CONNECT_ERROR ,DISCONNECTED};
+    public static enum Events {CONNECTED, USER_VIEWING_PRODUCT, USER_PURCHASED_PRODUCT, CONNECT_ERROR ,DISCONNECTED, CHAT_MESSAGE_NEW};
 
     private Connector socketConnector;
 
@@ -112,6 +112,9 @@ public class CollabCart {
             case USER_PURCHASED_PRODUCT:
                 mSocket.on("userPurchasedProduct", listener);
                 break;
+            case CHAT_MESSAGE_NEW:
+                mSocket.on("newChatMessage", listener);
+                break;
             default:
                 Log.d(LOG_TAG, "Not a valid event type to bind listener");
                 break;
@@ -141,6 +144,9 @@ public class CollabCart {
             case USER_PURCHASED_PRODUCT:
                 mSocket.off("userPurchasedProduct", listener);
                 break;
+            case CHAT_MESSAGE_NEW:
+                mSocket.on("newChatMessage", listener);
+                break;
             default:
                 Log.d(LOG_TAG, "Not a valid event type to unbind listener");
                 break;
@@ -161,6 +167,12 @@ public class CollabCart {
                 break;
             case PRODUCT_PURCHASE:
                 actionStr = "productPurchase";
+                break;
+            case CHAT_MESSAGE_POST:
+                actionStr = "postChatMessage";
+                break;
+            case CHAT_WINDOW_LEFT:
+                actionStr = "userLeftChat";
                 break;
             default:
                 Log.d(LOG_TAG, "Invalid action to notify");

@@ -1,15 +1,11 @@
 package com.droid.floatboat.collabcart;
 
-import android.app.Activity;
-import android.app.AlertDialog;
 import android.app.Dialog;
-import android.content.Intent;
-import android.graphics.Color;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.ActionBar;
-import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -17,26 +13,23 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.droid.floatboat.collabcart.Charts.BarchartHelper;
 import com.droid.floatboat.collabcart.Charts.ChartDataProvider;
 import com.droid.floatboat.collabcart.collbcartsdk.CollabCart;
 import com.droid.floatboat.collabcart.data.Session;
-import com.droid.floatboat.collabcart.interfaces.ItemClickListener;
 import com.droid.floatboat.collabcart.models.BarchartData;
 import com.droid.floatboat.collabcart.models.Product;
-import com.droid.floatboat.collabcart.models.User;
 import com.droid.floatboat.collabcart.net.OnCompleteCallBack;
 import com.droid.floatboat.collabcart.services.ProductStatsService;
-import com.droid.floatboat.collabcart.utils.CartUtils;
 import com.github.mikephil.charting.charts.BarChart;
+import com.github.nkzawa.emitter.Emitter;
 import com.squareup.picasso.Picasso;
 
 import org.json.JSONException;
 import org.json.JSONObject;
-import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 
@@ -171,8 +164,8 @@ public class ProductDetailsActivity extends AppCompatActivity {
         } catch (JSONException e) {
             e.printStackTrace();
         }
-
     }
+
 
 
     private void showChatDialog() {
@@ -182,6 +175,46 @@ public class ProductDetailsActivity extends AppCompatActivity {
         dialog.setTitle("Friends Chat");
         dialog.show();
 
+        final Emitter.Listener newMsgListener =  new Emitter.Listener() {
+            @Override
+            public void call(Object... args) {
+                final JSONObject details = (JSONObject) args[0];
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+
+                        try {
+                            Log.d(LOG_TAG, "Someone sent one message:" + details.toString(4));
+                            int productId = details.getInt("productId");
+
+                            if (ProductDetailsActivity.this.product.getProductId() == productId) {
+                                Log.d(LOG_TAG, "Someone sent one message:" + productId);
+                                LinearLayout chatwindow = (LinearLayout)dialog.findViewById(R.id.chatwindow);
+                                TextView tv = new TextView(ProductDetailsActivity.this);
+                                LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
+                                        LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+                                tv.setLayoutParams(params);
+                                tv.setText(details.get("userName") + ":" + details.get("message"));
+                                chatwindow.addView(tv);
+                            }
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                });
+
+
+            }
+        };
+
+        dialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
+            @Override
+            public void onDismiss(DialogInterface dialog) {
+                Session.getCollabCart().off(CollabCart.Events.CHAT_MESSAGE_NEW, newMsgListener);
+            }
+        });
+
         final EditText chatInput = (EditText) dialog.findViewById(R.id.chatinput);
         Button sendBtn = (Button) dialog.findViewById(R.id.sendbtn);
 
@@ -190,10 +223,27 @@ public class ProductDetailsActivity extends AppCompatActivity {
             public void onClick(View view) {
                String enteredText =  chatInput.getText().toString();
 
+                try{
+
+                    JSONObject obj = new JSONObject();
+
+                    obj.put("productId", product.getProductId());
+                    obj.put("userId", Session.getUserId());
+                    obj.put("userName", Session.getUserDetails().getFirstName());
+                    obj.put("message", enteredText);
+                    Session.getCollabCart().notify(CollabCart.Actions.CHAT_MESSAGE_POST,obj);
+
+                }catch(Exception e){
+
+                }
+
             }
         });
 
+        Session.getCollabCart().on(CollabCart.Events.CHAT_MESSAGE_NEW,newMsgListener);
+
     }
+
 
 }
 
