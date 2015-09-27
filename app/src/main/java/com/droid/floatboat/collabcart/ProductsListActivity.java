@@ -56,6 +56,7 @@ itemClickListener = new ItemClickListener() {
             }
         };
 
+        CartUtils.showProgress(this);
 
         // The number of Columns
         GridLayoutManager layoutManager = new GridLayoutManager(this, 2);
@@ -91,7 +92,6 @@ itemClickListener = new ItemClickListener() {
     protected void onResume() {
         super.onResume();
         if (categoryIdFromBundle != categoryId) {
-            CartUtils.showProgress(this);
             Products.fetchProducts(Session.getUserId(), categoryIdFromBundle, new OnCompleteCallBack() {
                 @Override
                 public void onComplete(boolean success, int statusCode) {
