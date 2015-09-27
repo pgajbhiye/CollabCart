@@ -2,9 +2,12 @@ package com.droid.floatboat.collabcart.data;
 
 
 import com.droid.floatboat.collabcart.collbcartsdk.CollabCart;
+import com.droid.floatboat.collabcart.models.BarchartData;
 import com.droid.floatboat.collabcart.models.Categories;
 import com.droid.floatboat.collabcart.models.Products;
 import com.droid.floatboat.collabcart.models.UserDetails;
+
+import java.util.ArrayList;
 
 public class Session {
 
@@ -12,6 +15,7 @@ public class Session {
     private static Categories categories;
     private static Products products;
     private static CollabCart collabCart;
+    private static ArrayList<BarchartData> productViewsData, productPurchaseData;
 
     public static void setUserDetails(UserDetails loginUser) {
         userDetails = loginUser;
@@ -46,6 +50,22 @@ public class Session {
         collabCart = new CollabCart();
         collabCart.connect();
         return collabCart;
+    }
+
+    public static void setProductViewsData(ArrayList<BarchartData> pvData){
+        productViewsData = pvData;
+    }
+
+    public static ArrayList<BarchartData> getProductViewsData(){
+        return productViewsData;
+    }
+
+    public static void setProductPurchaseData(ArrayList<BarchartData> pvData){
+        productPurchaseData = pvData;
+    }
+
+    public static ArrayList<BarchartData> getProductPurchaseData(){
+        return productPurchaseData;
     }
 
     public static void destroy(){
