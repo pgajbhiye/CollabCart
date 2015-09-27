@@ -7,14 +7,12 @@ import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.util.Log;
-import android.widget.Toast;
 
 import com.droid.floatboat.collabcart.adapters.ProductCategoryAdapter;
 import com.droid.floatboat.collabcart.data.Session;
 import com.droid.floatboat.collabcart.interfaces.ItemClickListener;
 import com.droid.floatboat.collabcart.models.CardViewData;
 import com.droid.floatboat.collabcart.models.Categories;
-import com.droid.floatboat.collabcart.models.Products;
 import com.droid.floatboat.collabcart.net.OnCompleteCallBack;
 import com.droid.floatboat.collabcart.utils.CartUtils;
 
@@ -45,7 +43,6 @@ public class ProductCategoryActivity extends Activity {
             @Override
             public void onItemClick(int pos) {
                 categoryId = Session.getCategories().mapCategoryByTag(list.get(pos).getCategoryTag());
-                Toast.makeText(ProductCategoryActivity.this, "Clicked " + categoryId, Toast.LENGTH_SHORT).show();
 
                 Intent intent = new Intent(ProductCategoryActivity.this, ProductsListActivity.class);
                 intent.putExtra("categoryId", categoryId);
