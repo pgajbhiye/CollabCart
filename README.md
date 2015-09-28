@@ -29,7 +29,7 @@ ScreenShots
 
 ![](https://he-s3.s3.amazonaws.com/media/screenshots/a0286fba023d0fdevice-2015-09-27-205423.png?Signature=13ZhOZriviyWcg0V%2FOMYOnbXkOQ%3D&Expires=1443422116&AWSAccessKeyId=AKIAJLE6MUHDYS3HN6YQ)
 
-
+![](https://he-s3.s3.amazonaws.com/media/screenshots/a43f0fda433510device-2015-09-27-205439.png?Signature=FWIHJfK%2BAbiFVKK3d7v8%2FUEasUw%3D&Expires=1443422116&AWSAccessKeyId=AKIAJLE6MUHDYS3HN6YQ)
 
 Stack: 
 --
