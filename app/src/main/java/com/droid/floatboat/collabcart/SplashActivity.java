@@ -39,7 +39,7 @@ public class SplashActivity extends Activity {
                 }
 
                 CartUtils.showProgress(SplashActivity.this);
-                new User().setUserEmail("leona.workman@gmail.com").loginUser(new OnCompleteCallBack() { //userEmail
+                new User().setUserEmail(userEmail).loginUser(new OnCompleteCallBack() { //userEmail
                     @Override
                     public void onComplete(boolean success, int statusCode) {
                         Log.d(LOG_TAG, "Login User success" + success + " statusCode " + statusCode);
