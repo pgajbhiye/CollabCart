@@ -20,6 +20,17 @@ Objective of the project:
 
 User can choose to open collaborative chat/discussion on product with currently viewing users/friends. 
 
+
+ScreenShots
+--
+![](https://he-s3.s3.amazonaws.com/media/screenshots/7e0cdf47e0a5f8device-2015-09-27-205300.png?Signature=fQdgOR1OK60303nq1c1votqiE88%3D&Expires=1443422116&AWSAccessKeyId=AKIAJLE6MUHDYS3HN6YQ)
+
+![](https://he-s3.s3.amazonaws.com/media/screenshots/87e5e4287e3da5device-2015-09-27-205325.png?Signature=JcL%2BntJOPQCsfGagW1ZVuWWhgXk%3D&Expires=1443422116&AWSAccessKeyId=AKIAJLE6MUHDYS3HN6YQ)
+
+![](https://he-s3.s3.amazonaws.com/media/screenshots/a0286fba023d0fdevice-2015-09-27-205423.png?Signature=13ZhOZriviyWcg0V%2FOMYOnbXkOQ%3D&Expires=1443422116&AWSAccessKeyId=AKIAJLE6MUHDYS3HN6YQ)
+
+
+
 Stack: 
 --
 **CLIENT:** **Android SDK, Java, Android Studio**
@@ -36,13 +47,14 @@ Stack:
 	- com.android.support:design:22.2.0
 	- com.android.support:palette-v7:22.2.0 
 
-**Server:** **Node js, Mongo DB, Webstrom IDE, Heroku**
+**Server:** **Node js, Mongo DB, Webstrom IDE, Heroku, AboutYou.de SDK**
 
 	  - ejs Template
 	  - Java Script
 	  - SocketIO
 	  - Heroku
 	  - Mango Labs
+	  - AboutYou.de SDK
 
 Modules: 
 ---
@@ -73,6 +85,7 @@ Demonstrating ecommerce website enabled with **CollabCart**.
 1) [https://youtu.be/tEuEJnk7Y24](https://youtu.be/tEuEJnk7Y24 "https://youtu.be/tEuEJnk7Y24")
 
 2) [https://youtu.be/dItikMbxBdw](https://youtu.be/dItikMbxBdw "https://youtu.be/dItikMbxBdw")
+
 
 
 UserCredentials To Test
