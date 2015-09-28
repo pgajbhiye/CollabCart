@@ -33,6 +33,11 @@ public class SplashActivity extends Activity {
         loginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if(!userEmail.equals("leona.workman@gmail.com")  && !userEmail.equals("camacho.nolan@gmail.com")){
+                    Toast.makeText(SplashActivity.this, "Invalid Email Address.", Toast.LENGTH_LONG).show();
+                    return;
+                }
+
                 CartUtils.showProgress(SplashActivity.this);
                 new User().setUserEmail("leona.workman@gmail.com").loginUser(new OnCompleteCallBack() { //userEmail
                     @Override
@@ -47,7 +52,7 @@ public class SplashActivity extends Activity {
                             finish();
 
                         } else {
-                            Toast.makeText(SplashActivity.this, "Fetch Categories Failed - Invalid Categories", Toast.LENGTH_LONG).show();
+                            Toast.makeText(SplashActivity.this, "Invalid Email Address.", Toast.LENGTH_LONG).show();
                         }
                     }
                 });
