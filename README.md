@@ -22,7 +22,27 @@ User can choose to open collaborative chat/discussion on product with currently 
 
 Stack: 
 --
-Android SDK, Java, Android Studio, Node js, Mongo DB, HTML, CSS, Java Script 
+**CLIENT:** **Android SDK, Java, Android Studio**
+
+	- appcompat-v7:22.2.0
+	- picasso:2.5.1'
+	- recyclerview-v7:21.0.0
+	- cardview-v7:21.0.0
+	- gson:2.2.4
+	- retrofit:converter-gson:2.0.0
+	- retrofit:2.0.0-beta1
+	- socket.io-client:0.3.0
+	- MPAndroidChart:v2.1.4
+	- com.android.support:design:22.2.0
+	- com.android.support:palette-v7:22.2.0 
+
+**Server:** **Node js, Mongo DB, Webstrom IDE, Heroku**
+
+	  - ejs Template
+	  - Java Script
+	  - SocketIO
+	  - Heroku
+	  - Mango Labs
 
 Modules: 
 ---
@@ -46,20 +66,30 @@ This module tracks number of product purchases categorized by friends/other user
 
 This module enables discussion window between users currently viewing same product to discuss about product features experiences and reviews.
 
-**Link to youtube videos** demonstrating ecommerce website enabled with CollabCart.
+Link to youtube videos
+--- 
+Demonstrating ecommerce website enabled with **CollabCart**.
 
 1) [https://youtu.be/tEuEJnk7Y24](https://youtu.be/tEuEJnk7Y24 "https://youtu.be/tEuEJnk7Y24")
 
 2) [https://youtu.be/dItikMbxBdw](https://youtu.be/dItikMbxBdw "https://youtu.be/dItikMbxBdw")
 
 
-**UserCredentials To Test**
+UserCredentials To Test
+--
 
 1) leona.workman@gmail.com
 
 2) camacho.nolan@gmail.com
 
+Heroku App URL
+--
+[https://collabcart.herokuapp.com](https://collabcart.herokuapp.com "https://collabcart.herokuapp.com")
 
+
+MongoLabs DB
+--
+[ds051943.mongolab.com:51943/collabcart](ds051943.mongolab.com:51943/collabcart "ds051943.mongolab.com:51943/collabcart")
 
 **Thanks,**
 
