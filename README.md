@@ -23,13 +23,13 @@ User can choose to open collaborative chat/discussion on product with currently 
 
 ScreenShots
 --
-![](https://he-s3.s3.amazonaws.com/media/screenshots/7e0cdf47e0a5f8device-2015-09-27-205300.png?Signature=fQdgOR1OK60303nq1c1votqiE88%3D&Expires=1443422116&AWSAccessKeyId=AKIAJLE6MUHDYS3HN6YQ)
+![](https://collabcart.herokuapp.com/images/7e0cdf47e0a5f8device-2015-09-27-205300.png)
 
-![](https://he-s3.s3.amazonaws.com/media/screenshots/87e5e4287e3da5device-2015-09-27-205325.png?Signature=JcL%2BntJOPQCsfGagW1ZVuWWhgXk%3D&Expires=1443422116&AWSAccessKeyId=AKIAJLE6MUHDYS3HN6YQ)
+![](https://collabcart.herokuapp.com/images/87e5e4287e3da5device-2015-09-27-205325.png)
 
-![](https://he-s3.s3.amazonaws.com/media/screenshots/a0286fba023d0fdevice-2015-09-27-205423.png?Signature=13ZhOZriviyWcg0V%2FOMYOnbXkOQ%3D&Expires=1443422116&AWSAccessKeyId=AKIAJLE6MUHDYS3HN6YQ)
+![](https://collabcart.herokuapp.com/images/a0286fba023d0fdevice-2015-09-27-205423.png)
 
-![](https://he-s3.s3.amazonaws.com/media/screenshots/a43f0fda433510device-2015-09-27-205439.png?Signature=FWIHJfK%2BAbiFVKK3d7v8%2FUEasUw%3D&Expires=1443422116&AWSAccessKeyId=AKIAJLE6MUHDYS3HN6YQ)
+![](https://collabcart.herokuapp.com/images/a43f0fda433510device-2015-09-27-205439.png)
 
 Stack: 
 --
